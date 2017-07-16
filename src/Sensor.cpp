@@ -5,6 +5,7 @@
  * Created on July 15, 2017, 8:21 PM
  */
 
+#include "Area.hpp"
 #include "Sensor.hpp"
 #include <iostream>
 
@@ -76,59 +77,3 @@ Humidity_sensor::Humidity_sensor(sensor_type t, int value, string s): Sensor(val
     this->type = t;
 }
 
-
-
-
-
-Area::Area(int _id, string _name) : id(_id), name(_name)
-{
-
-}
-
-Area::Area() : id(0), name("")
-{
-
-}
-
-void Area::setName(string newName)
-{
-    name = newName;
-}
-
-string Area::getName()
-{
-    return name;
-}
-
-void Area::addSensor(Sensor *newSensor)
-{
-    sensors.insert(newSensor);
-    
-    newSensor->setArea(this);
-}
-
-const set<Sensor*, by_id> & Area::getSensors(void)
-{
-    return sensors;
-}
-
-void Area::removeSensor(Sensor *s)
-{
-    sensors.erase(s);
-}
-
-void Area::showSensors(void)
-{
-    cout << this->name << ": " << "количество датчиков = " << sensors.size() << endl;  
-    
-    for(set<Sensor*, by_id>::iterator it = sensors.begin(); it != sensors.end(); ++it)
-    {
-        cout << (*it)->getId() << " " << (*it)->getType() << " " << (*it)->getName() << endl;
-    }
-    cout << endl;
-}
-
-Area::~Area()
-{
-
-}

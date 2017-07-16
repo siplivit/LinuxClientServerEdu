@@ -16,7 +16,8 @@
 #include <vector>
 #include <set>
 
-#include "Sensor.hpp"
+#include "src/Sensor.hpp"
+#include "src/Area.hpp"
 
 using namespace std;
 
