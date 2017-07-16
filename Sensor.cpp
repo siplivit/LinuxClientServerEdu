@@ -82,12 +82,12 @@ Humidity_sensor::Humidity_sensor(sensor_type t, int value, string s): Sensor(val
 
 Area::Area(int _id, string _name) : id(_id), name(_name)
 {
-    sensors = new set<Sensor*, by_id>();
+
 }
 
 Area::Area() : id(0), name("")
 {
-    sensors = new set<Sensor*, by_id>();
+
 }
 
 void Area::setName(string newName)
@@ -102,26 +102,26 @@ string Area::getName()
 
 void Area::addSensor(Sensor *newSensor)
 {
-    sensors->insert(newSensor);
+    sensors.insert(newSensor);
     
     newSensor->setArea(this);
 }
 
-set<Sensor*, by_id>* Area::getSensors()
+const set<Sensor*, by_id> & Area::getSensors(void)
 {
     return sensors;
 }
 
 void Area::removeSensor(Sensor *s)
 {
-    sensors->erase(s);
+    sensors.erase(s);
 }
 
 void Area::showSensors(void)
 {
-    cout << this->name << ": " << "количество датчиков = " << (*(sensors)).size() << endl;  
+    cout << this->name << ": " << "количество датчиков = " << sensors.size() << endl;  
     
-    for(set<Sensor*, by_id>::iterator it = (*(sensors)).begin(); it != (*(sensors)).end(); ++it)
+    for(set<Sensor*, by_id>::iterator it = sensors.begin(); it != sensors.end(); ++it)
     {
         cout << (*it)->getId() << " " << (*it)->getType() << " " << (*it)->getName() << endl;
     }
@@ -130,5 +130,5 @@ void Area::showSensors(void)
 
 Area::~Area()
 {
-    delete sensors;
+
 }

@@ -82,7 +82,7 @@ private:
 protected:
     int id;
     std::string name;
-    std::set<Sensor*, by_id> *sensors;
+    std::set<Sensor*, by_id> sensors;
 public:
     Area(int _id, std::string _name);
     Area();
@@ -90,7 +90,7 @@ public:
     void setName(std::string newName);
     std::string getName();
     void addSensor(Sensor *newSensor);
-    std::set<Sensor*, by_id>*  getSensors();
+    const std::set<Sensor*, by_id> & getSensors();
     void removeSensor(Sensor *s);
     
     void showSensors(void);
