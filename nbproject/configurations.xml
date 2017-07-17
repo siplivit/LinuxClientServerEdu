@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>src/Area.hpp</itemPath>
       <itemPath>src/Sensor.hpp</itemPath>
+      <itemPath>config.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -40,6 +41,8 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="config.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Area.cpp" ex="false" tool="1" flavor2="0">
@@ -71,6 +74,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="config.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Area.cpp" ex="false" tool="1" flavor2="0">

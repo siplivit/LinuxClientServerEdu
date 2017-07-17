@@ -37,23 +37,12 @@ int main(int argc, char** argv) {
     Humidity_sensor *humid_sens_2 = new Humidity_sensor(HUMIDITY, 63547586, "Humidity");
     Humidity_sensor *humid_sens_3    = new Humidity_sensor(HUMIDITY, 23768463, "Humidity");
     
-    temp_sens_3->setTemperature(25.3);
-    
     kitchenArea->addSensor(temp_sens_1);
     kitchenArea->addSensor(humid_sens_1);
     bedroomArea->addSensor(temp_sens_2);
     bedroomArea->addSensor(humid_sens_2);
     bathroomArea->addSensor(temp_sens_3);
     hallArea->addSensor(humid_sens_3);
-    
-    for(std::set<Sensor*, by_id>::iterator it = bathroomArea->getSensors().begin(); it != bathroomArea->getSensors().end(); ++it)
-    {
-        Temperature_sensor * temp_tmp = dynamic_cast<Temperature_sensor*>(*it);
-        if(temp_tmp)
-        {
-            std::cout << temp_tmp->getTemperature()<< endl;
-        }
-    }
     
     kitchenArea->showSensors();
     bedroomArea->showSensors();
@@ -89,4 +78,3 @@ int main(int argc, char** argv) {
     
     return 0;
 }
-

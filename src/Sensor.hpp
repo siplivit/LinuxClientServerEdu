@@ -29,6 +29,7 @@ protected:
     sensor_type type;
     std::string name;
     Area *area;
+    double data;
 public:
     Sensor();
     Sensor(int value, std::string s);
@@ -37,14 +38,14 @@ public:
     void setType(const sensor_type& v);
     void setId(const int& value);
     void setName(const std::string& s);
-    
     const sensor_type& getType(void);
     const int& getId(void);
     const std::string& getName(void);
     void setArea(Area *a);
     Area* getArea();
-    
     bool operator< (const Sensor& other) const;
+    virtual void setData(double) = 0;
+    virtual double getData(void) = 0;
     
     virtual ~Sensor();
 };
@@ -53,22 +54,20 @@ class Temperature_sensor: public Sensor
 {
 private:
 protected:
-    double temperature;
 public:
     Temperature_sensor(sensor_type t, int value, std::string s);
-    void setTemperature(double);
-    double getTemperature(void);
+    void setData(double);
+    double getData(void);
 };
 
 class Humidity_sensor: public Sensor
 {
 private:
 protected:
-    double humidity;
 public:
     Humidity_sensor(sensor_type t, int value, std::string s);
-    void setHumidity(double);
-    double getHumidity(void);
+    void setData(double);
+    double getData(void);
 };
 
 #endif /* SENSOR_HPP */
