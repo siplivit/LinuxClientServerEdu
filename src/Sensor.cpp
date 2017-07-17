@@ -71,9 +71,26 @@ Temperature_sensor::Temperature_sensor(sensor_type t, int value, string s): Sens
     this->type = t;
 }
 
+void Temperature_sensor::setTemperature(double t)
+{
+    temperature = t;
+}
+double Temperature_sensor::getTemperature(void)
+{
+    return temperature;
+}
+
 
 Humidity_sensor::Humidity_sensor(sensor_type t, int value, string s): Sensor(value, s)
 {
     this->type = t;
 }
 
+void Humidity_sensor::setHumidity(double h)
+{
+    humidity = h;
+}
+double Humidity_sensor::getHumidity(void)
+{
+    return humidity;
+}

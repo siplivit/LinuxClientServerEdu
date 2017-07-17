@@ -29,13 +29,15 @@ int main(int argc, char** argv) {
     Area *bathroomArea = new Area(3,"Ванная");
     Area *hallArea = new Area(4,"Коридор");
     
-    Sensor *temp_sens_1 = new Temperature_sensor(TEMPERATURE, 73967465, "Temperature");
-    Sensor *temp_sens_2 = new Temperature_sensor(TEMPERATURE, 96873564, "Temperature");
-    Sensor *temp_sens_3    = new Temperature_sensor(TEMPERATURE, 68736453, "Temperature");
+    Temperature_sensor *temp_sens_1 = new Temperature_sensor(TEMPERATURE, 73967465, "Temperature");
+    Temperature_sensor *temp_sens_2 = new Temperature_sensor(TEMPERATURE, 96873564, "Temperature");
+    Temperature_sensor *temp_sens_3    = new Temperature_sensor(TEMPERATURE, 68736453, "Temperature");
     
-    Sensor *humid_sens_1 = new Humidity_sensor(HUMIDITY, 65839807, "Humidity");
-    Sensor *humid_sens_2 = new Humidity_sensor(HUMIDITY, 63547586, "Humidity");
-    Sensor *humid_sens_3    = new Humidity_sensor(HUMIDITY, 23768463, "Humidity");
+    Humidity_sensor *humid_sens_1 = new Humidity_sensor(HUMIDITY, 65839807, "Humidity");
+    Humidity_sensor *humid_sens_2 = new Humidity_sensor(HUMIDITY, 63547586, "Humidity");
+    Humidity_sensor *humid_sens_3    = new Humidity_sensor(HUMIDITY, 23768463, "Humidity");
+    
+    temp_sens_3->setTemperature(25.3);
     
     kitchenArea->addSensor(temp_sens_1);
     kitchenArea->addSensor(humid_sens_1);
@@ -43,6 +45,15 @@ int main(int argc, char** argv) {
     bedroomArea->addSensor(humid_sens_2);
     bathroomArea->addSensor(temp_sens_3);
     hallArea->addSensor(humid_sens_3);
+    
+    for(std::set<Sensor*, by_id>::iterator it = bathroomArea->getSensors().begin(); it != bathroomArea->getSensors().end(); ++it)
+    {
+        Temperature_sensor * temp_tmp = dynamic_cast<Temperature_sensor*>(*it);
+        if(temp_tmp)
+        {
+            std::cout << temp_tmp->getTemperature()<< endl;
+        }
+    }
     
     kitchenArea->showSensors();
     bedroomArea->showSensors();

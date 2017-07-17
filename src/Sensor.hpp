@@ -53,16 +53,22 @@ class Temperature_sensor: public Sensor
 {
 private:
 protected:
+    double temperature;
 public:
     Temperature_sensor(sensor_type t, int value, std::string s);
+    void setTemperature(double);
+    double getTemperature(void);
 };
 
 class Humidity_sensor: public Sensor
 {
 private:
 protected:
+    double humidity;
 public:
     Humidity_sensor(sensor_type t, int value, std::string s);
+    void setHumidity(double);
+    double getHumidity(void);
 };
 
 #endif /* SENSOR_HPP */
